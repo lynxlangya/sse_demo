@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SSE-DEMO</title>
+</head>
+
+<body>
+    <h1 id="demo">SSE-DEMO</h1>
+    <script>
+        ;(function connect() {
+            if (window.EventSource) {
+                let url = new EventSource('http://127.0.0.1:9999/connect')
+
+                url.addEventListener('open', () => {
+                    console.log('SSE 已连接');
+                }, false)
+
+                url.addEventListener('message', e => {
+                    console.log(e);
+                    console.log(e.data);
+                    document.getElementById('demo').innerHTML = e.data
+                }, false)
+
+                url.addEventListener('pause', () => {
+                    url.close()
+                }, false)
+            } else {
+                console.error('浏览去不支持SSE')
+            }
+        })()
+    </script>
+</body>
+
+</html>
