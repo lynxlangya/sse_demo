@@ -1,5 +1,5 @@
 /**
- * @author MARS <wangyunfan@vtstar.net>
+ * @author MARS <wangyunfan66@gmail.com>
  * @date 2019-11-29
  * @fileoverview sse 服务端
  */

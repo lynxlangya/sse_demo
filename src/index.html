@@ -10,10 +10,12 @@
 
 <body>
     <h1 id="demo">SSE-DEMO</h1>
+    <button id="btn">断开连接</button>
     <script>
         ;(function connect() {
             if (window.EventSource) {
                 let url = new EventSource('http://127.0.0.1:9999/connect')
+                let btn = document.getElementById('btn')
 
                 url.addEventListener('open', () => {
                     console.log('SSE 已连接');
@@ -25,9 +27,9 @@
                     document.getElementById('demo').innerHTML = e.data
                 }, false)
 
-                url.addEventListener('pause', () => {
+                btn.addEventListener('click', function() {
                     url.close()
-                }, false)
+                })
             } else {
                 console.error('浏览去不支持SSE')
             }
